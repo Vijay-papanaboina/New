@@ -15,15 +15,15 @@ app.use(express.static('public'));
 
 // Razorpay instance
 const razorpay = new Razorpay({
-    key_id: process.env.YOUR_KEY_ID, // Replace with your Razorpay Key ID
-    key_secret: process.env.YOUR_KEY_SECRET // Replace with your Razorpay Key Secret
+    key_id: process.env.YOUR_KEY_ID,
+    key_secret: process.env.YOUR_KEY_SECRET
 });
 
 // Route to create an order
 app.post('/create-order', async (req, res) => {
     const { amount } = req.body;
     const options = {
-        amount: amount, // amount in smallest currency unit (paise in INR)
+        amount: amount, 
     };
     try {
         const order = await razorpay.orders.create(options);
